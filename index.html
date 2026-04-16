@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BayFixPro | خدمات منزلية متكاملة — Bayonne & Jersey City NJ</title>
+<meta name="description" content="BayFixPro — خدمات منزلية متكاملة في Bayonne وJersey City NJ. تنظيف، سباكة، كهرباء، تركيب. 7AM–7PM.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0A0F1E;--navy2:#111827;--navy3:#1C2537;
+  --orange:#F97316;--orange2:#FB923C;--gold:#FCD34D;
+  --cream:#FDF8F0;--cream2:#C8BFB0;--green:#22C55E;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Cairo',sans-serif;background:var(--navy);color:var(--cream);overflow-x:hidden;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:14px 32px;display:flex;justify-content:space-between;align-items:center;background:rgba(10,15,30,0.92);backdrop-filter:blur(24px);border-bottom:1px solid rgba(249,115,22,0.12);}
+.logo-wrap{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.logo-svg{width:46px;height:46px;filter:drop-shadow(0 0 10px rgba(249,115,22,0.5));}
+.logo-texts{display:flex;flex-direction:column;line-height:1.1;}
+.logo-name{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;background:linear-gradient(135deg,#F97316,#FB923C,#FCD34D);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.logo-sub{font-size:9px;color:var(--cream2);letter-spacing:1.5px;text-transform:uppercase;font-weight:600;}
+.nav-cta{background:linear-gradient(135deg,var(--orange),var(--orange2));color:var(--navy);padding:10px 22px;border-radius:6px;font-weight:700;font-size:13px;text-decoration:none;transition:all .3s;box-shadow:0 4px 20px rgba(249,115,22,0.35);white-space:nowrap;}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(249,115,22,0.5);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;padding:120px 32px 80px;text-align:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% -10%,rgba(249,115,22,0.14) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 5% 95%,rgba(249,115,22,0.06) 0%,transparent 60%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(249,115,22,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(249,115,22,0.05) 1px,transparent 1px);background-size:80px 80px;animation:gridMove 20s linear infinite;}
+@keyframes gridMove{from{background-position:0 0;}to{background-position:80px 80px;}}
+.hero-content{position:relative;z-index:2;max-width:820px;}
+
+.hero-logo{width:100px;height:100px;margin:0 auto 32px;filter:drop-shadow(0 0 28px rgba(249,115,22,0.55));animation:popIn .8s cubic-bezier(.34,1.56,.64,1) forwards;opacity:0;}
+@keyframes popIn{from{opacity:0;transform:scale(0.4);}to{opacity:1;transform:scale(1);}}
+
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.25);padding:7px 18px;border-radius:4px;font-size:12px;font-weight:700;color:var(--orange2);letter-spacing:2px;text-transform:uppercase;margin-bottom:24px;animation:fadeUp .7s ease .3s both;}
+
+.hero-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,12vw,120px);letter-spacing:4px;line-height:.9;margin-bottom:12px;animation:fadeUp .7s ease .45s both;}
+.h1-bay{color:var(--orange);}
+.h1-fix{-webkit-text-stroke:2px var(--orange2);color:transparent;}
+.h1-pro{color:var(--cream);}
+
+.hero-ar{font-size:clamp(16px,2.5vw,26px);font-weight:700;color:var(--cream2);margin-bottom:24px;animation:fadeUp .7s ease .6s both;}
+.hero-desc{font-size:clamp(13px,1.7vw,16px);color:var(--cream2);line-height:1.9;max-width:580px;margin:0 auto 36px;animation:fadeUp .7s ease .75s both;}
+
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:fadeUp .7s ease .9s both;}
+
+/* WhatsApp button */
+.btn-wa{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;padding:15px 30px;border-radius:8px;font-weight:900;font-size:15px;text-decoration:none;transition:all .3s;box-shadow:0 6px 25px rgba(37,211,102,0.35);}
+.btn-wa:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(37,211,102,0.5);}
+
+/* SMS button */
+.btn-sms{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--orange),var(--gold));color:var(--navy);padding:15px 30px;border-radius:8px;font-weight:900;font-size:15px;text-decoration:none;transition:all .3s;box-shadow:0 6px 25px rgba(249,115,22,0.35);}
+.btn-sms:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(249,115,22,0.5);}
+
+.hero-stats{display:flex;margin-top:56px;border:1px solid rgba(249,115,22,0.15);border-radius:10px;overflow:hidden;max-width:380px;margin-left:auto;margin-right:auto;animation:fadeUp .7s ease 1.05s both;}
+.stat{flex:1;padding:18px 8px;text-align:center;border-right:1px solid rgba(249,115,22,0.15);background:rgba(249,115,22,0.03);}
+.stat:last-child{border-right:none;}
+.stat-n{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--orange);display:block;letter-spacing:1px;}
+.stat-l{font-size:9px;color:var(--cream2);text-transform:uppercase;letter-spacing:1px;}
+
+/* SECTIONS */
+section{padding:90px 32px;}
+.sec-hdr{text-align:center;}
+.sec-label{display:inline-block;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--orange);background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.2);padding:5px 14px;border-radius:3px;margin-bottom:14px;}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,6vw,60px);letter-spacing:2px;line-height:1;margin-bottom:6px;}
+.sec-ar{font-size:clamp(16px,2.5vw,24px);font-weight:700;color:var(--cream2);margin-bottom:40px;}
+.divider{width:48px;height:3px;background:linear-gradient(90deg,transparent,var(--orange),transparent);margin:14px auto 40px;border-radius:2px;}
+
+/* SERVICES */
+.svc-sec{background:var(--navy2);}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;max-width:1200px;margin:0 auto;}
+.svc-card{background:var(--navy3);border:1px solid rgba(249,115,22,0.08);border-radius:12px;padding:32px 26px;transition:all .4s;position:relative;overflow:hidden;}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--orange),transparent);transform:scaleX(0);transition:transform .4s;}
+.svc-card:hover{border-color:rgba(249,115,22,0.3);transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,0.4);}
+.svc-card:hover::before{transform:scaleX(1);}
+.svc-icon{width:52px;height:52px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:18px;transition:all .3s;}
+.svc-card:hover .svc-icon{background:rgba(249,115,22,0.18);box-shadow:0 0 18px rgba(249,115,22,0.25);}
+.svc-en{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;color:var(--orange2);margin-bottom:4px;}
+.svc-ar-name{font-size:16px;font-weight:700;color:var(--cream);margin-bottom:10px;}
+.svc-desc{font-size:13px;color:var(--cream2);line-height:1.8;}
+
+/* AREA */
+.area-sec{background:var(--navy);}
+.area-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+.area-card{background:var(--navy2);border:1px solid rgba(249,115,22,0.15);border-radius:16px;padding:40px;text-align:center;}
+.map-pin{font-size:54px;display:block;margin-bottom:14px;animation:bounce 2.5s infinite;}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.city{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:2px;color:var(--orange);display:block;}
+.state{font-size:11px;color:var(--cream2);letter-spacing:3px;text-transform:uppercase;}
+.area-info h3{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--cream);margin-bottom:6px;}
+.area-info h4{font-size:17px;font-weight:700;color:var(--cream2);margin-bottom:22px;}
+.tags{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:22px;}
+.tag{background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.2);padding:6px 13px;border-radius:4px;font-size:12px;font-weight:700;color:var(--orange2);}
+.hours{display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.25);padding:12px 18px;border-radius:8px;font-weight:700;font-size:14px;color:var(--green);}
+.sms-only{margin-top:14px;font-size:12px;color:var(--cream2);line-height:1.7;}
+
+/* CONTACT */
+.contact-sec{background:var(--navy2);position:relative;overflow:hidden;}
+.contact-sec::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(249,115,22,0.06),transparent 70%);border-radius:50%;pointer-events:none;}
+.contact-inner{max-width:600px;margin:0 auto;text-align:center;position:relative;}
+.contact-card{background:var(--navy3);border:1px solid rgba(249,115,22,0.2);border-radius:20px;padding:52px 40px;}
+.contact-top{font-size:16px;font-weight:700;color:var(--cream2);margin-bottom:4px;}
+.contact-phone{font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,8vw,70px);letter-spacing:4px;background:linear-gradient(135deg,var(--orange),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;margin:16px 0 8px;direction:ltr;}
+.contact-note{font-size:13px;color:var(--cream2);line-height:1.8;margin-bottom:32px;}
+
+/* Big contact buttons */
+.contact-btns{display:flex;flex-direction:column;gap:14px;align-items:stretch;}
+.cta-wa{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;padding:20px 28px;border-radius:10px;font-weight:900;font-size:16px;text-decoration:none;transition:all .3s;box-shadow:0 6px 28px rgba(37,211,102,0.3);}
+.cta-wa:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(37,211,102,0.5);}
+.cta-sms{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,var(--orange),var(--gold));color:var(--navy);padding:20px 28px;border-radius:10px;font-weight:900;font-size:16px;text-decoration:none;transition:all .3s;box-shadow:0 6px 28px rgba(249,115,22,0.3);}
+.cta-sms:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(249,115,22,0.5);}
+.btn-ico{font-size:28px;flex-shrink:0;}
+.btn-txt{display:flex;flex-direction:column;line-height:1.3;text-align:right;flex:1;}
+.btn-txt-en{font-size:16px;font-weight:900;}
+.btn-txt-ar{font-size:12px;font-weight:600;opacity:.8;}
+
+/* FOOTER */
+footer{background:var(--navy);border-top:1px solid rgba(249,115,22,0.1);padding:40px 32px;text-align:center;}
+.footer-svg{width:48px;height:48px;margin:0 auto 10px;filter:drop-shadow(0 0 10px rgba(249,115,22,0.4));}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;background:linear-gradient(135deg,var(--orange),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;margin-bottom:8px;}
+.footer-sub{font-size:12px;color:var(--cream2);line-height:1.8;margin-bottom:16px;}
+.footer-copy{font-size:11px;color:rgba(200,191,176,0.3);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(36px);transition:all .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:768px){
+  nav{padding:12px 16px;}
+  section{padding:65px 16px;}
+  .hero{padding:105px 16px 60px;}
+  .area-inner{grid-template-columns:1fr;}
+  .contact-card{padding:36px 18px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo-wrap">
+    <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F97316"/><stop offset="100%" stop-color="#FCD34D"/></linearGradient>
+        <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FB923C"/><stop offset="100%" stop-color="#F97316"/></linearGradient>
+      </defs>
+      <path d="M50 10 L86 44 L86 88 L62 88 L62 63 L38 63 L38 88 L14 88 L14 44 Z" fill="url(#g1)" opacity="0.13"/>
+      <path d="M50 14 L82 46 L82 85 L63 85 L63 61 L37 61 L37 85 L18 85 L18 46 Z" fill="none" stroke="url(#g1)" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M7 47 L50 7 L93 47" fill="none" stroke="url(#g1)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M38 53 L51 40 M54 37 C57 34 62 34 64 37 C66 40 65 44 62 47 L50 59 C49 60 47 60 46 59 L41 54 C40 53 40 51 41 50 L54 37Z" fill="none" stroke="url(#g2)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="73" cy="22" r="3" fill="url(#g1)" opacity="0.7"/>
+      <circle cx="82" cy="33" r="2" fill="url(#g1)" opacity="0.5"/>
+    </svg>
+    <div class="logo-texts">
+      <span class="logo-name">BayFixPro</span>
+      <span class="logo-sub">Home Services NJ</span>
+    </div>
+  </a>
+  <a href="#contact" class="nav-cta">📱 تواصل معنا</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+
+    <svg class="hero-logo" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="hg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F97316"/><stop offset="100%" stop-color="#FCD34D"/></linearGradient>
+        <linearGradient id="hg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FB923C"/><stop offset="100%" stop-color="#F97316"/></linearGradient>
+      </defs>
+      <path d="M50 10 L86 44 L86 88 L62 88 L62 63 L38 63 L38 88 L14 88 L14 44 Z" fill="url(#hg1)" opacity="0.12"/>
+      <path d="M50 14 L82 46 L82 85 L63 85 L63 61 L37 61 L37 85 L18 85 L18 46 Z" fill="none" stroke="url(#hg1)" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M7 47 L50 7 L93 47" fill="none" stroke="url(#hg1)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M38 53 L51 40 M54 37 C57 34 62 34 64 37 C66 40 65 44 62 47 L50 59 C49 60 47 60 46 59 L41 54 C40 53 40 51 41 50 L54 37Z" fill="none" stroke="url(#hg2)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="73" cy="22" r="3.5" fill="url(#hg1)" opacity="0.8"/>
+      <circle cx="83" cy="34" r="2.5" fill="url(#hg1)" opacity="0.5"/>
+      <circle cx="61" cy="14" r="2" fill="url(#hg1)" opacity="0.5"/>
+    </svg>
+
+    <div class="eyebrow">📍 Bayonne & Jersey City, NJ</div>
+
+    <h1 class="hero-h1">
+      <span class="h1-bay">BAY</span><span class="h1-fix">FIX</span><span class="h1-pro">PRO</span>
+    </h1>
+
+    <div class="hero-ar">خدمات منزلية متكاملة — بيتك في أيدٍ أمينة</div>
+
+    <p class="hero-desc">
+      تنظيف شامل • سباكة • كهرباء • تركيب غسالات ودرايير • صيانة عامة<br>
+      Cleaning • Plumbing • Electric • Appliance Install • Maintenance
+    </p>
+
+    <div class="hero-btns">
+      <a href="https://wa.me/15514249067?text=Hi%2C%20I%20need%20home%20services%20in%20Bayonne%2FJersey%20City" class="btn-wa" target="_blank">
+        💬 WhatsApp
+      </a>
+      <a href="sms:+15514249067&body=Hi, I need home services in Bayonne/Jersey City NJ" class="btn-sms">
+        📱 Send SMS
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-n">7AM</span><span class="stat-l">Open</span></div>
+      <div class="stat"><span class="stat-n">7PM</span><span class="stat-l">Close</span></div>
+      <div class="stat"><span class="stat-n">7</span><span class="stat-l">Days/Week</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="svc-sec" id="services">
+  <div class="sec-hdr reveal">
+    <span class="sec-label">What We Do</span>
+    <h2 class="sec-title">Our Services</h2>
+    <div class="sec-ar">خدماتنا</div>
+    <div class="divider"></div>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card reveal">
+      <div class="svc-icon">🧹</div>
+      <div class="svc-en">Deep Cleaning</div>
+      <div class="svc-ar-name">تنظيف عميق شامل</div>
+      <p class="svc-desc">تنظيف احترافي كامل — أرضيات، حمامات، مطابخ وإزالة البيكرد<br>Full deep clean: floors, bathrooms, kitchens & baked-in grime.</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-icon">🫧</div>
+      <div class="svc-en">Baked-In Cleaning</div>
+      <div class="svc-ar-name">تنظيف البيكرد</div>
+      <p class="svc-desc">إزالة الدهون الصعبة من الأفران والسطوح<br>Removing tough grease & burnt-on grime from ovens & surfaces.</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-icon">🔧</div>
+      <div class="svc-en">Plumbing</div>
+      <div class="svc-ar-name">سباكة</div>
+      <p class="svc-desc">مواسير، تسريبات، حنفيات، سيفونات وكل مشاكل المياه<br>Pipes, leaks, faucets, drains & all water issues.</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-icon">⚡</div>
+      <div class="svc-en">Electrical</div>
+      <div class="svc-ar-name">كهرباء</div>
+      <p class="svc-desc">أعطال كهربائية، إضاءة، مفاتيح وبرايز<br>Repairs, lighting installation, switches & outlets.</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-icon">🔌</div>
+      <div class="svc-en">Appliance Install</div>
+      <div class="svc-ar-name">تركيب غسالة ودرايير</div>
+      <p class="svc-desc">تركيب غسالات، نشافات، ثلاجات وكل الأجهزة<br>Washers, dryers, fridges & all appliance installation.</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-icon">🏠</div>
+      <div class="svc-en">General Maintenance</div>
+      <div class="svc-ar-name">صيانة منزلية عامة</div>
+      <p class="svc-desc">كل ما يحتاجه بيتك في مكان واحد<br>Everything your home needs — all in one place.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AREA -->
+<section class="area-sec" id="area">
+  <div class="sec-hdr reveal">
+    <span class="sec-label">Where We Serve</span>
+    <h2 class="sec-title">Service Area</h2>
+    <div class="sec-ar">منطقة الخدمة</div>
+    <div class="divider"></div>
+  </div>
+  <div class="area-inner">
+    <div class="area-card reveal">
+      <span class="map-pin">📍</span>
+      <span class="city">Bayonne</span>
+      <span class="state">New Jersey</span>
+      <br><br>
+      <span class="city" style="font-size:22px;">+ Jersey City</span>
+      <span class="state">New Jersey</span>
+    </div>
+    <div class="area-info reveal">
+      <h3>We Come to You</h3>
+      <h4>بنيجي عندك في بيتك</h4>
+      <div class="tags">
+        <span class="tag">📍 Bayonne, NJ</span>
+        <span class="tag">📍 Jersey City, NJ</span>
+        <span class="tag">🚗 Mobile Service</span>
+      </div>
+      <div class="hours">🕖 7:00 AM — 7:00 PM &nbsp;|&nbsp; 7 Days</div>
+      <p class="sms-only">
+        💬 تواصل عن طريق WhatsApp أو SMS فقط — مش كولات<br>
+        WhatsApp or SMS only — no phone calls
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-sec" id="contact">
+  <div class="sec-hdr reveal">
+    <span class="sec-label">Get In Touch</span>
+    <h2 class="sec-title">Book Now</h2>
+    <div class="sec-ar">احجز دلوقتي</div>
+    <div class="divider"></div>
+  </div>
+  <div class="contact-inner">
+    <div class="contact-card reveal">
+      <div class="contact-top">تواصل معنا — Contact Us</div>
+      <span class="contact-phone">551-424-9067</span>
+      <p class="contact-note">
+        ابعتلنا رسالة بعنوانك والخدمة اللي محتاجها<br>
+        Send your address + service needed — we reply fast ⚡<br>
+        <strong>WhatsApp أو SMS — اختار اللي أسهل ليك</strong>
+      </p>
+      <div class="contact-btns">
+        <a href="https://wa.me/15514249067?text=Hi%2C%20I%20need%20home%20services%20in%20Bayonne%2FJersey%20City%20NJ" class="cta-wa" target="_blank">
+          <span class="btn-ico">💬</span>
+          <div class="btn-txt">
+            <span class="btn-txt-en">WhatsApp Us Now</span>
+            <span class="btn-txt-ar">ابعتلنا واتساب</span>
+          </div>
+        </a>
+        <a href="sms:+15514249067&body=Hi, I need home services in Bayonne/Jersey City NJ" class="cta-sms">
+          <span class="btn-ico">📱</span>
+          <div class="btn-txt">
+            <span class="btn-txt-en">Send SMS Message</span>
+            <span class="btn-txt-ar">ابعت رسالة عادية</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <svg class="footer-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="fg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F97316"/><stop offset="100%" stop-color="#FCD34D"/></linearGradient></defs>
+    <path d="M50 14 L82 46 L82 85 L63 85 L63 61 L37 61 L37 85 L18 85 L18 46 Z" fill="none" stroke="url(#fg1)" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M7 47 L50 7 L93 47" fill="none" stroke="url(#fg1)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M38 53 L51 40 M54 37 C57 34 62 34 64 37 C66 40 65 44 62 47 L50 59 C49 60 47 60 46 59 L41 54 C40 53 40 51 41 50 L54 37Z" fill="none" stroke="url(#fg1)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <span class="footer-brand">BayFixPro</span>
+  <p class="footer-sub">
+    خدمات منزلية متكاملة — Bayonne & Jersey City, NJ<br>
+    Cleaning • Plumbing • Electric • Appliance Install • Maintenance<br>
+    📞 551-424-9067 &nbsp;|&nbsp; 7AM–7PM • 7 Days a Week
+  </p>
+  <p class="footer-copy">© 2025 BayFixPro. All rights reserved.</p>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e,i) => {
+    if(e.isIntersecting){
+      setTimeout(() => e.target.classList.add('visible'), i*80);
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:0.1});
+reveals.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
