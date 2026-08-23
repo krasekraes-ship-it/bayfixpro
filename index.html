@@ -1,581 +1,347 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
 <title>NJFixPro – Bayonne's Trusted Home Repair Team</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --blue: #1a3bcc;
-    --blue-dark: #0f2499;
-    --orange: #f5a623;
-    --orange-dark: #e09415;
-    --white: #ffffff;
-    --light: #f4f6fb;
-    --gray: #6b7280;
-    --text: #1e2a3a;
+  :root{
+    --blue-dark:#141c4d;
+    --blue:#1c2a72;
+    --blue-light:#2438a3;
+    --orange:#f5a623;
+    --orange-dark:#e0921a;
+    --white:#ffffff;
+    --ink:#1c2540;
   }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Nunito', sans-serif;
-    color: var(--text);
-    background: var(--white);
-    overflow-x: hidden;
+  *{box-sizing:border-box;}
+  html[dir="rtl"] body, html[dir="rtl"] *{font-family:'Cairo','Segoe UI',Arial,sans-serif !important;}
+  [data-en],[data-ar]{display:none;}
+  html[lang="en"] [data-en]{display:revert;}
+  html[lang="ar"] [data-ar]{display:revert;}
+  html[lang="en"] span[data-en],html[lang="en"] a[data-en]{display:inline;}
+  html[lang="ar"] span[data-ar],html[lang="ar"] a[data-ar]{display:inline;}
+  .lang-toggle{
+    display:flex;border:1px solid var(--blue);border-radius:999px;overflow:hidden;
+    font-size:12.5px;font-weight:700;margin-inline-end:8px;
   }
-
-  /* NAV */
-  nav {
-    background: var(--blue-dark);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 24px;
-    height: 60px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  .lang-toggle button{
+    border:none;background:transparent;padding:6px 12px;cursor:pointer;color:var(--blue);
+    font-family:inherit;
   }
-
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
+  .lang-toggle button.active{background:var(--blue);color:#fff;}
+  .head-right{display:flex;align-items:center;}
+  body{
+    margin:0;
+    font-family:'Segoe UI', Arial, sans-serif;
+    background:var(--white);
+    color:var(--ink);
   }
+  a{text-decoration:none;color:inherit;}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px;}
 
-  .logo-icon {
-    width: 38px;
-    height: 38px;
-    background: var(--orange);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
+  header{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 20px;background:var(--white);
+    border-bottom:1px solid #eee;
   }
-
-  .logo-text {
-    font-family: 'Oswald', sans-serif;
-    font-size: 22px;
-    color: var(--white);
-    letter-spacing: 0.5px;
+  .brand{display:flex;align-items:center;gap:8px;font-weight:800;font-size:19px;color:var(--blue);}
+  .brand .icon{
+    background:var(--orange);color:var(--white);width:30px;height:30px;border-radius:8px;
+    display:flex;align-items:center;justify-content:center;font-size:16px;
   }
-  .logo-text span { color: var(--orange); }
-
-  .nav-phone {
-    background: var(--orange);
-    color: var(--white);
-    font-weight: 800;
-    font-size: 14px;
-    padding: 8px 16px;
-    border-radius: 8px;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: background 0.2s;
+  .call-btn{
+    background:var(--orange);color:var(--white);font-weight:700;font-size:14px;
+    padding:9px 16px;border-radius:8px;display:flex;align-items:center;gap:6px;white-space:nowrap;
   }
-  .nav-phone:hover { background: var(--orange-dark); }
+  .call-btn:hover{background:var(--orange-dark);}
 
-  /* HERO */
-  .hero {
-    background: var(--blue);
-    padding: 56px 24px 48px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+  .hero{
+    background:linear-gradient(180deg,var(--blue) 0%,var(--blue-dark) 100%);
+    color:var(--white);text-align:center;padding:44px 20px 40px;
+  }
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;background:rgba(245,166,35,0.18);
+    border:1px solid var(--orange);color:var(--orange);font-weight:700;font-size:13px;
+    padding:8px 16px;border-radius:999px;margin-bottom:22px;
+  }
+  .hero h1{font-size:32px;line-height:1.25;margin:0 0 14px;}
+  .hero h1 .hi{color:var(--orange);}
+  .hero p{font-size:16px;line-height:1.6;color:#d7dcf5;max-width:520px;margin:0 auto 22px;}
+  .hero p b{color:var(--white);}
+  .pin{
+    display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.2);padding:8px 16px;border-radius:999px;font-size:13.5px;
+    margin-bottom:26px;
+  }
+  .hero-ctas{display:flex;flex-direction:column;gap:12px;align-items:center;}
+  .btn-orange{
+    background:var(--orange);color:var(--white);font-weight:800;font-size:16px;
+    padding:15px 26px;border-radius:10px;width:100%;max-width:340px;text-align:center;
+    box-shadow:0 10px 24px rgba(245,166,35,0.3);
+  }
+  .btn-orange:hover{background:var(--orange-dark);}
+  .btn-outline{
+    border:1.5px solid rgba(255,255,255,0.4);color:var(--white);font-weight:600;font-size:15px;
+    padding:13px 24px;border-radius:10px;width:100%;max-width:340px;text-align:center;
   }
 
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 70% 30%, rgba(255,255,255,0.07) 0%, transparent 70%);
+  .stats{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+    max-width:600px;margin:32px auto 0;text-align:center;
+  }
+  .stats .num{font-size:26px;font-weight:800;color:var(--orange);}
+  .stats .lbl{font-size:12px;color:#c7cdec;margin-top:4px;}
+
+  .strip{
+    background:var(--orange);color:var(--white);text-align:center;
+    font-size:13.5px;font-weight:700;padding:12px 20px;
   }
 
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--orange);
-    color: var(--white);
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    padding: 7px 18px;
-    border-radius: 99px;
-    margin-bottom: 24px;
+  section{padding:52px 0;}
+  .section-head{text-align:center;margin-bottom:34px;}
+  .section-head h2{font-size:26px;color:var(--blue);margin:0 0 8px;}
+  .section-head p{font-size:15px;color:#666;margin:0;}
+
+  .services-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:16px;
+  }
+  .service-card{
+    border:1px solid #eee;border-radius:14px;padding:22px 18px;
+    box-shadow:0 4px 14px rgba(20,28,77,0.06);
+  }
+  .service-card .icon{font-size:26px;margin-bottom:10px;}
+  .service-card h3{font-size:16.5px;color:var(--blue);margin:0 0 6px;}
+  .service-card p{font-size:13.5px;color:#666;line-height:1.5;margin:0;}
+  .service-card.new{
+    border:1.5px solid var(--orange);position:relative;
+    background:linear-gradient(180deg,#fff8ec,#ffffff);
+  }
+  .service-card.new .tag{
+    position:absolute;top:-10px;right:14px;background:var(--orange);color:#fff;
+    font-size:10.5px;font-weight:800;padding:3px 10px;border-radius:999px;letter-spacing:0.03em;
   }
 
-  .hero h1 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 42px;
-    font-weight: 700;
-    color: var(--white);
-    line-height: 1.1;
-    margin-bottom: 8px;
+  .areas{background:#f7f8fd;}
+  .areas .section-head p{color:#555;max-width:560px;margin:0 auto;}
+  .area-list{
+    display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0 30px;
+  }
+  .area-list span{
+    background:#fff;border:1px solid #e2e5f5;color:var(--blue);font-size:13.5px;font-weight:600;
+    padding:9px 16px;border-radius:999px;
+  }
+  .center{text-align:center;}
+  .btn-blue{
+    background:var(--blue);color:#fff;font-weight:700;font-size:15px;
+    padding:14px 24px;border-radius:10px;display:inline-block;
   }
 
-  .hero h1 span { color: var(--orange); }
+  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .why-card .icon{font-size:24px;margin-bottom:8px;}
+  .why-card h3{font-size:15.5px;color:var(--blue);margin:0 0 6px;}
+  .why-card p{font-size:13.5px;color:#666;line-height:1.5;margin:0;}
 
-  .hero-sub {
-    color: rgba(255,255,255,0.85);
-    font-size: 16px;
-    line-height: 1.6;
-    max-width: 340px;
-    margin: 0 auto 32px;
+  .cta{
+    background:linear-gradient(180deg,var(--blue) 0%,var(--blue-dark) 100%);
+    color:#fff;text-align:center;padding:48px 20px;
   }
+  .cta h2{font-size:26px;margin:0 0 10px;}
+  .cta p{color:#c7cdec;font-size:14.5px;margin:0 0 24px;}
+  .cta .call-btn{display:inline-flex;font-size:17px;padding:15px 28px;margin:0 auto;}
 
-  .hero-location-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.25);
-    color: var(--white);
-    font-size: 13px;
-    font-weight: 700;
-    padding: 6px 16px;
-    border-radius: 99px;
-    margin-bottom: 28px;
+  footer{
+    text-align:center;padding:28px 20px;font-size:12.5px;color:#888;border-top:1px solid #eee;
   }
 
-  .btn-primary {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: var(--orange);
-    color: var(--white);
-    font-family: 'Oswald', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    padding: 16px 32px;
-    border-radius: 12px;
-    text-decoration: none;
-    margin: 0 auto 16px;
-    max-width: 320px;
-    box-shadow: 0 6px 20px rgba(245,166,35,0.45);
-    transition: transform 0.15s, box-shadow 0.15s;
+  @media (min-width:640px){
+    .hero-ctas{flex-direction:row;justify-content:center;}
+    .btn-orange, .btn-outline{width:auto;}
+    .why-grid{grid-template-columns:1fr 1fr 1fr 1fr;}
   }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(245,166,35,0.5); }
-
-  .btn-secondary {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    border: 2px solid rgba(255,255,255,0.5);
-    color: var(--white);
-    font-size: 16px;
-    font-weight: 700;
-    padding: 13px 28px;
-    border-radius: 12px;
-    text-decoration: none;
-    max-width: 320px;
-    margin: 0 auto;
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .btn-secondary:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
-
-  /* STATS */
-  .stats {
-    background: var(--orange);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background-color: rgba(255,255,255,0.2);
-  }
-  .stat {
-    background: var(--orange);
-    text-align: center;
-    padding: 20px 12px;
-  }
-  .stat-num {
-    font-family: 'Oswald', sans-serif;
-    font-size: 30px;
-    font-weight: 700;
-    color: var(--white);
-  }
-  .stat-label {
-    font-size: 12px;
-    color: rgba(255,255,255,0.85);
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-top: 2px;
-  }
-
-  /* LOCATION HIGHLIGHT */
-  .location-highlight {
-    background: var(--blue-dark);
-    color: var(--white);
-    text-align: center;
-    padding: 20px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    font-size: 15px;
-    font-weight: 700;
-  }
-  .location-highlight span {
-    background: var(--orange);
-    color: var(--white);
-    padding: 4px 14px;
-    border-radius: 99px;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-  }
-
-  /* SERVICES */
-  section { padding: 48px 20px; }
-  .section-title {
-    text-align: center;
-    margin-bottom: 8px;
-  }
-  .section-title h2 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-    color: var(--blue-dark);
-  }
-  .section-title h2 span { color: var(--orange); }
-  .section-title p {
-    color: var(--gray);
-    font-size: 15px;
-    margin-top: 6px;
-    margin-bottom: 32px;
-  }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-
-  .service-card {
-    background: var(--white);
-    border: 1.5px solid #e5e9f5;
-    border-radius: 16px;
-    padding: 20px 16px;
-    text-align: center;
-    transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
-    box-shadow: 0 2px 8px rgba(26,59,204,0.06);
-  }
-  .service-card:hover {
-    border-color: var(--blue);
-    box-shadow: 0 8px 24px rgba(26,59,204,0.15);
-    transform: translateY(-3px);
-  }
-
-  .service-icon { font-size: 34px; margin-bottom: 10px; }
-  .service-name {
-    font-family: 'Oswald', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--blue-dark);
-    margin-bottom: 4px;
-  }
-  .service-desc {
-    font-size: 12px;
-    color: var(--gray);
-    line-height: 1.5;
-  }
-
-  /* BAYONNE FOCUS SECTION */
-  .bayonne-section {
-    background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);
-    color: var(--white);
-    text-align: center;
-    padding: 48px 24px;
-    position: relative;
-    overflow: hidden;
-  }
-  .bayonne-section::before {
-    content: '📍';
-    position: absolute;
-    font-size: 200px;
-    opacity: 0.04;
-    top: -30px;
-    right: -20px;
-    transform: rotate(15deg);
-  }
-  .bayonne-section h2 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 30px;
-    font-weight: 700;
-    margin-bottom: 12px;
-  }
-  .bayonne-section h2 span { color: var(--orange); }
-  .bayonne-section p {
-    color: rgba(255,255,255,0.85);
-    font-size: 15px;
-    line-height: 1.7;
-    max-width: 340px;
-    margin: 0 auto 28px;
-  }
-
-  .bayonne-neighborhoods {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    margin-bottom: 32px;
-  }
-  .neighborhood-tag {
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.25);
-    color: var(--white);
-    font-size: 13px;
-    font-weight: 700;
-    padding: 8px 16px;
-    border-radius: 99px;
-  }
-
-  /* WHY CHOOSE */
-  .why-section { background: var(--light); }
-  .why-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-  .why-card {
-    background: var(--white);
-    border-radius: 14px;
-    padding: 18px 20px;
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  }
-  .why-icon {
-    width: 46px;
-    height: 46px;
-    background: var(--blue-dark);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-  .why-card h3 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 17px;
-    color: var(--blue-dark);
-    margin-bottom: 4px;
-  }
-  .why-card p { font-size: 13px; color: var(--gray); line-height: 1.5; }
-
-  /* CTA */
-  .cta-section {
-    background: var(--blue);
-    text-align: center;
-    padding: 52px 24px;
-  }
-  .cta-section h2 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 34px;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 8px;
-  }
-  .cta-section h2 span { color: var(--orange); }
-  .cta-section p {
-    color: rgba(255,255,255,0.85);
-    font-size: 14px;
-    margin-bottom: 28px;
-  }
-  .cta-phone {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background: var(--orange);
-    color: var(--white);
-    font-family: 'Oswald', sans-serif;
-    font-size: 26px;
-    font-weight: 600;
-    padding: 18px 32px;
-    border-radius: 14px;
-    text-decoration: none;
-    max-width: 320px;
-    margin: 0 auto;
-    box-shadow: 0 8px 24px rgba(245,166,35,0.45);
-    transition: transform 0.15s;
-  }
-  .cta-phone:hover { transform: scale(1.02); }
-
-  /* FOOTER */
-  footer {
-    background: var(--blue-dark);
-    color: rgba(255,255,255,0.6);
-    text-align: center;
-    padding: 24px 20px;
-    font-size: 12px;
-    line-height: 1.8;
-  }
-  footer a { color: var(--orange); text-decoration: none; }
-  footer strong { color: var(--white); }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="logo">
-    <div class="logo-icon">🔧</div>
-    <div class="logo-text">NJ<span>Fix</span>Pro</div>
-  </a>
-  <a href="tel:5514249067" class="nav-phone">📞 (551) 424-9067</a>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-badge">✅ Bayonne's Trusted Home Repair Team</div>
-  <h1>Your Home Fixed Right,<br><span>Fast & Affordable</span></h1>
-  <p class="hero-sub">Plumbing, electrical, cleaning, painting & more — serving <strong style="color:#fff">Bayonne, NJ</strong> with professional, reliable service.</p>
-
-  <div class="hero-location-badge">
-    📍 Serving Bayonne, NJ Only
+<header>
+  <a class="brand" href="#"><span class="icon">🔧</span> NJFixPro</a>
+  <div class="head-right">
+    <div class="lang-toggle">
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+      <button id="btn-ar" onclick="setLang('ar')">عربي</button>
+    </div>
+    <a class="call-btn" href="tel:+18455381219">📞 <span data-en>(845) 538-1219</span><span data-ar>1219-538 (845)</span></a>
   </div>
+</header>
 
-  <a href="tel:5514249067" class="btn-primary">📞 Call Now – (551) 424-9067</a>
-  <a href="#services" class="btn-secondary">Our Services ↓</a>
-</section>
-
-<!-- STATS -->
-<div class="stats">
-  <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Jobs Completed</div></div>
-  <div class="stat"><div class="stat-num">5 ⭐</div><div class="stat-label">Customer Rating</div></div>
-  <div class="stat"><div class="stat-num">24h</div><div class="stat-label">Fast Response</div></div>
-  <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Years Experience</div></div>
+<div class="hero">
+  <div class="badge">
+    <span data-en>✅ Bayonne's Trusted Home Repair Team</span>
+    <span data-ar>✅ فريق بايون الموثوق لإصلاح المنازل</span>
+  </div>
+  <h1 data-en>Your Home Fixed Right,<br><span class="hi">Fast &amp; Affordable</span></h1>
+  <h1 data-ar>بيتك مُصلَّح صح،<br><span class="hi">بسرعة وبسعر مناسب</span></h1>
+  <p data-en>Plumbing, electrical, cleaning, painting &amp; more — serving <b>Bayonne, NJ</b> with professional, reliable service.</p>
+  <p data-ar>سباكة، كهرباء، تنظيف، دهانات وأكتر — بنخدم <b>بايون، نيوجيرزي</b> بخدمة احترافية وموثوقة.</p>
+  <div class="pin"><span data-en>📍 Serving Bayonne, NJ Only</span><span data-ar>📍 نخدم بايون فقط، نيوجيرزي</span></div>
+  <div class="hero-ctas">
+    <a class="btn-orange" href="tel:+18455381219"><span data-en>📞 Call Now – (845) 538-1219</span><span data-ar>📞 اتصل الآن – 1219-538 (845)</span></a>
+    <a class="btn-outline" href="#services"><span data-en>Our Services ↓</span><span data-ar>خدماتنا ↓</span></a>
+  </div>
+  <div class="stats">
+    <div><div class="num">500+</div><div class="lbl"><span data-en>Jobs Completed</span><span data-ar>عملية منجزة</span></div></div>
+    <div><div class="num">5 ⭐</div><div class="lbl"><span data-en>Customer Rating</span><span data-ar>تقييم العملاء</span></div></div>
+    <div><div class="num">24h</div><div class="lbl"><span data-en>Fast Response</span><span data-ar>استجابة سريعة</span></div></div>
+    <div><div class="num">10+</div><div class="lbl"><span data-en>Years Experience</span><span data-ar>سنوات خبرة</span></div></div>
+  </div>
 </div>
 
-<!-- LOCATION HIGHLIGHT -->
-<div class="location-highlight">
-  🏠 We exclusively serve <span>Bayonne, NJ 07002</span> — your local experts!
+<div class="strip">
+  <span data-en>🏠 We exclusively serve Bayonne, NJ 07002 — your local experts!</span>
+  <span data-ar>🏠 نخدم حصريًا بايون، نيوجيرزي 07002 — خبراؤك المحليون!</span>
 </div>
 
-<!-- SERVICES -->
 <section id="services">
-  <div class="section-title">
-    <h2>Our <span>Services</span></h2>
-    <p>Professional home repair services in Bayonne, NJ</p>
-  </div>
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="service-icon">🚿</div>
-      <div class="service-name">Plumbing</div>
-      <div class="service-desc">Leaks, pipes, faucets, drains & full installations</div>
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-en>Our Services</h2>
+      <h2 data-ar>خدماتنا</h2>
+      <p data-en>Professional home repair services in Bayonne, NJ</p>
+      <p data-ar>خدمات إصلاح منازل احترافية في بايون، نيوجيرزي</p>
     </div>
-    <div class="service-card">
-      <div class="service-icon">⚡</div>
-      <div class="service-name">Electrical</div>
-      <div class="service-desc">Wiring, outlets, panels & lighting installations</div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🧹</div>
-      <div class="service-name">Cleaning</div>
-      <div class="service-desc">Deep cleaning, move-in/out & regular maintenance</div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🎨</div>
-      <div class="service-name">Painting</div>
-      <div class="service-desc">Interior & exterior painting, professional finish</div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🔩</div>
-      <div class="service-name">Installation</div>
-      <div class="service-desc">Furniture, appliances, fixtures & more</div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🏠</div>
-      <div class="service-name">General Repair</div>
-      <div class="service-desc">Doors, windows, tiles, drywall & handyman jobs</div>
-    </div>
-  </div>
-</section>
-
-<!-- BAYONNE FOCUS -->
-<section class="bayonne-section">
-  <h2>Proudly Serving<br><span>Bayonne, NJ</span></h2>
-  <p>We are your local Bayonne home repair team. We know every neighborhood, every street, and every home in Bayonne — that's why homeowners trust us.</p>
-  <div class="bayonne-neighborhoods">
-    <div class="neighborhood-tag">📍 Downtown Bayonne</div>
-    <div class="neighborhood-tag">📍 Bergen Point</div>
-    <div class="neighborhood-tag">📍 East 5th</div>
-    <div class="neighborhood-tag">📍 West Side</div>
-    <div class="neighborhood-tag">📍 North End</div>
-    <div class="neighborhood-tag">📍 Constable Hook</div>
-  </div>
-  <a href="tel:5514249067" class="btn-primary" style="background:var(--orange);">📞 Call Your Bayonne Team</a>
-</section>
-
-<!-- WHY CHOOSE -->
-<section class="why-section">
-  <div class="section-title">
-    <h2>Why Choose <span>NJFixPro?</span></h2>
-    <p>Bayonne homeowners trust us for good reason</p>
-  </div>
-  <div class="why-grid">
-    <div class="why-card">
-      <div class="why-icon">⚡</div>
-      <div>
-        <h3>Fast Response</h3>
-        <p>We show up on time and get the job done quickly without cutting corners.</p>
+    <div class="services-grid">
+      <div class="service-card new">
+        <div class="tag">NEW</div>
+        <div class="icon">🛏️</div>
+        <h3 data-en>Airbnb / Short-Term Rental Cleaning</h3>
+        <h3 data-ar>تنظيف Airbnb / الإيجار قصير المدى</h3>
+        <p data-en>Guest turnover cleaning by our dedicated all-female cleaning team, serving Bayonne, NJ hosts — beds, bathrooms, kitchen &amp; restocking, ready fast between check-out and check-in.</p>
+        <p data-ar>تنظيف بين الحجوزات بواسطة فريق سيدات متخصص، لخدمة مضيفي بايون — أسرّة، حمامات، مطبخ وتجديد المستلزمات، جاهز بسرعة بين مغادرة ووصول الضيوف.</p>
       </div>
-    </div>
-    <div class="why-card">
-      <div class="why-icon">💰</div>
-      <div>
-        <h3>Fair Pricing</h3>
-        <p>Honest quotes upfront — no hidden fees, no surprises at the end.</p>
+      <div class="service-card">
+        <div class="icon">🚿</div>
+        <h3 data-en>Plumbing</h3><h3 data-ar>سباكة</h3>
+        <p data-en>Leaks, pipes, faucets, drains &amp; full installations</p>
+        <p data-ar>تسريبات، مواسير، حنفيات، مصارف وتركيبات كاملة</p>
       </div>
-    </div>
-    <div class="why-card">
-      <div class="why-icon">🛡️</div>
-      <div>
-        <h3>Trusted & Reliable</h3>
-        <p>Hundreds of happy customers right here in Bayonne, NJ.</p>
+      <div class="service-card">
+        <div class="icon">⚡</div>
+        <h3 data-en>Electrical</h3><h3 data-ar>كهرباء</h3>
+        <p data-en>Wiring, outlets, panels &amp; lighting installations</p>
+        <p data-ar>أسلاك، مقابس، لوحات كهرباء وتركيب إضاءة</p>
       </div>
-    </div>
-    <div class="why-card">
-      <div class="why-icon">📞</div>
-      <div>
-        <h3>Easy to Reach</h3>
-        <p>Call or message us anytime — we respond fast and speak your language.</p>
+      <div class="service-card">
+        <div class="icon">🧹</div>
+        <h3 data-en>Cleaning</h3><h3 data-ar>تنظيف</h3>
+        <p data-en>Deep cleaning, move-in/out &amp; regular maintenance</p>
+        <p data-ar>تنظيف عميق، تنظيف الانتقال، وصيانة دورية</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🎨</div>
+        <h3 data-en>Painting</h3><h3 data-ar>دهانات</h3>
+        <p data-en>Interior &amp; exterior painting, professional finish</p>
+        <p data-ar>دهانات داخلية وخارجية بلمسة احترافية</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🔩</div>
+        <h3 data-en>Installation</h3><h3 data-ar>تركيبات</h3>
+        <p data-en>Furniture, appliances, fixtures &amp; more</p>
+        <p data-ar>أثاث، أجهزة، تجهيزات وأكتر</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🏠</div>
+        <h3 data-en>General Repair</h3><h3 data-ar>إصلاحات عامة</h3>
+        <p data-en>Doors, windows, tiles, drywall &amp; handyman jobs</p>
+        <p data-ar>أبواب، شبابيك، بلاط، حوائط وأعمال صيانة عامة</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-section">
-  <h2>Ready to Fix Your Home<br>in <span>Bayonne?</span></h2>
-  <p>Available Monday – Saturday, 8 AM to 8 PM · Bayonne, NJ 07002</p>
-  <a href="tel:5514249067" class="cta-phone">📞 (551) 424-9067</a>
+<section class="areas">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-en>Proudly Serving Bayonne, NJ</h2>
+      <h2 data-ar>نخدم بايون، نيوجيرزي بكل فخر</h2>
+      <p data-en>We are your local Bayonne home repair team. We know every neighborhood, every street, and every home in Bayonne — that's why homeowners trust us.</p>
+      <p data-ar>إحنا فريق بايون المحلي لإصلاح المنازل. نعرف كل حي وكل شارع وكل بيت في بايون — عشان كده أصحاب المنازل بيثقوا فينا.</p>
+    </div>
+    <div class="area-list">
+      <span data-en>📍 Downtown Bayonne</span><span data-ar>📍 وسط بايون</span>
+      <span data-en>📍 Bergen Point</span><span data-ar>📍 بيرغن بوينت</span>
+      <span data-en>📍 East 5th</span><span data-ar>📍 إيست فيفث</span>
+      <span data-en>📍 West Side</span><span data-ar>📍 ويست سايد</span>
+      <span data-en>📍 North End</span><span data-ar>📍 نورث إند</span>
+      <span data-en>📍 Constable Hook</span><span data-ar>📍 كونستابل هوك</span>
+    </div>
+    <div class="center">
+      <a class="btn-blue" href="tel:+18455381219"><span data-en>📞 Call Your Bayonne Team</span><span data-ar>📞 اتصل بفريق بايون</span></a>
+    </div>
+  </div>
 </section>
 
-<!-- FOOTER -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-en>Why Choose NJFixPro?</h2>
+      <h2 data-ar>ليه تختار NJFixPro؟</h2>
+      <p data-en>Bayonne homeowners trust us for good reason</p>
+      <p data-ar>أصحاب منازل بايون بيثقوا فينا لسبب وجيه</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="icon">⚡</div>
+        <h3 data-en>Fast Response</h3><h3 data-ar>استجابة سريعة</h3>
+        <p data-en>We show up on time and get the job done quickly without cutting corners.</p>
+        <p data-ar>بنوصل في الميعاد وننجز الشغل بسرعة من غير أي تنازل في الجودة.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">💰</div>
+        <h3 data-en>Fair Pricing</h3><h3 data-ar>أسعار عادلة</h3>
+        <p data-en>Honest quotes upfront — no hidden fees, no surprises at the end.</p>
+        <p data-ar>أسعار واضحة من الأول — بدون رسوم مخفية أو مفاجآت في الآخر.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">🛡️</div>
+        <h3 data-en>Trusted &amp; Reliable</h3><h3 data-ar>موثوقون وجديرون بالثقة</h3>
+        <p data-en>Hundreds of happy customers right here in Bayonne, NJ.</p>
+        <p data-ar>مئات العملاء الراضيين هنا في بايون، نيوجيرزي.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">📞</div>
+        <h3 data-en>Easy to Reach</h3><h3 data-ar>سهل التواصل</h3>
+        <p data-en>Call or message us anytime — we respond fast and speak your language.</p>
+        <p data-ar>اتصل أو راسلنا في أي وقت — نرد بسرعة ونتحدث لغتك.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <h2 data-en>Ready to Fix Your Home in Bayonne?</h2>
+  <h2 data-ar>جاهز تصلّح بيتك في بايون؟</h2>
+  <p data-en>Available Monday – Saturday, 8 AM to 8 PM · Bayonne, NJ 07002</p>
+  <p data-ar>متاحون من الإثنين للسبت، 8 صباحًا لـ 8 مساءً · بايون، نيوجيرزي 07002</p>
+  <a class="call-btn" href="tel:+18455381219">📞 <span data-en>(845) 538-1219</span><span data-ar>1219-538 (845)</span></a>
+</div>
+
 <footer>
-  <strong>NJFixPro</strong> · 18th Street, Ground Floor, Bayonne, NJ 07002<br>
-  © 2026 NJFixPro. All rights reserved. · <a href="https://njfixpro.com">njfixpro.com</a>
+  <b>NJFixPro</b> · <span data-en>18th Street, Ground Floor, Bayonne, NJ 07002</span><span data-ar>شارع 18، الدور الأرضي، بايون، نيوجيرزي 07002</span><br>
+  <span data-en>© 2026 NJFixPro. All rights reserved.</span><span data-ar>© 2026 NJFixPro. جميع الحقوق محفوظة.</span> · njfixpro.com
 </footer>
+
+<script>
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-ar').classList.toggle('active', lang === 'ar');
+  }
+  setLang('en');
+</script>
 
 </body>
 </html>
