@@ -1,365 +1,485 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-<title>NJFixPro – Bayonne's Trusted Home Repair Team</title>
+<title>NJFixPro – Airbnb & Vrbo Property Management in Bayonne, NJ</title>
 <style>
   :root{
-    --blue-dark:#141c4d;
-    --blue:#1c2a72;
-    --blue-light:#2438a3;
-    --orange:#f5a623;
-    --orange-dark:#e0921a;
-    --white:#ffffff;
-    --ink:#1c2540;
+    --blue:#1D5FA6;
+    --blue-dark:#123E70;
+    --blue-mid:#2C74C4;
+    --yellow:#F6B90F;
+    --yellow-light:#FFD65C;
+    --bg:#F7FAFD;
+    --ink:#1E2530;
+    --ink-soft:#5C6672;
+    --white:#FFFFFF;
+    --radius:14px;
   }
-  *{box-sizing:border-box;}
-  html[dir="rtl"] body, html[dir="rtl"] *{font-family:'Cairo','Segoe UI',Arial,sans-serif !important;}
-  [data-en],[data-ar]{display:none;}
-  html[lang="en"] [data-en]{display:revert;}
-  html[lang="ar"] [data-ar]{display:revert;}
-  html[lang="en"] span[data-en],html[lang="en"] a[data-en]{display:inline;}
-  html[lang="ar"] span[data-ar],html[lang="ar"] a[data-ar]{display:inline;}
-  .lang-toggle{
-    display:flex;border:1px solid var(--blue);border-radius:999px;overflow:hidden;
-    font-size:12.5px;font-weight:700;margin-inline-end:8px;
-  }
-  .lang-toggle button{
-    border:none;background:transparent;padding:6px 12px;cursor:pointer;color:var(--blue);
-    font-family:inherit;
-  }
-  .lang-toggle button.active{background:var(--blue);color:#fff;}
-  .head-right{display:flex;align-items:center;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
   body{
-    margin:0;
-    font-family:'Segoe UI', Arial, sans-serif;
-    background:var(--white);
+    font-family:'Segoe UI',Tahoma,Arial,sans-serif;
+    background:var(--bg);
     color:var(--ink);
+    line-height:1.6;
   }
   a{text-decoration:none;color:inherit;}
-  .wrap{max-width:1000px;margin:0 auto;padding:0 20px;}
+  img{max-width:100%;display:block;}
+
+  .lang-block{display:none;}
+  .lang-block.active{display:block;}
+  span.lang-block.active{display:inline;}
 
   header{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:14px 20px;background:var(--white);
-    border-bottom:1px solid #eee;
+    position:sticky;top:0;z-index:50;
+    background:var(--white);
+    border-bottom:1px solid #e4edf6;
   }
-  .brand{display:flex;align-items:center;gap:8px;font-weight:800;font-size:19px;color:var(--blue);}
-  .brand .icon{
-    background:var(--orange);color:var(--white);width:30px;height:30px;border-radius:8px;
-    display:flex;align-items:center;justify-content:center;font-size:16px;
+  .header-inner{
+    max-width:1120px;margin:0 auto;padding:12px 20px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
   }
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.15rem;color:var(--blue-dark);}
+  .brand svg{width:44px;height:44px;flex-shrink:0;}
+  .header-actions{display:flex;align-items:center;gap:10px;}
+  .lang-toggle{
+    border:1.5px solid var(--blue);
+    color:var(--blue-dark);
+    background:transparent;
+    padding:7px 16px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:.85rem;
+    cursor:pointer;
+  }
+  .lang-toggle:hover{background:#eaf2fb;}
   .call-btn{
-    background:var(--orange);color:var(--white);font-weight:700;font-size:14px;
-    padding:9px 16px;border-radius:8px;display:flex;align-items:center;gap:6px;white-space:nowrap;
+    background:var(--yellow);
+    color:var(--blue-dark);
+    padding:9px 18px;
+    border-radius:999px;
+    font-weight:800;
+    font-size:.9rem;
+    white-space:nowrap;
   }
-  .call-btn:hover{background:var(--orange-dark);}
+  .call-btn:hover{background:var(--yellow-light);}
+
+  section{padding:60px 20px;}
+  .wrap{max-width:1120px;margin:0 auto;}
 
   .hero{
-    background:linear-gradient(180deg,var(--blue) 0%,var(--blue-dark) 100%);
-    color:var(--white);text-align:center;padding:44px 20px 40px;
+    background:linear-gradient(160deg,var(--blue-dark) 0%,var(--blue) 60%,var(--blue-mid) 100%);
+    color:var(--white);
+    padding:56px 20px 80px;
+    position:relative;
+    overflow:hidden;
   }
+  .hero-grid{
+    display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;
+  }
+  .hero-illustration{
+    display:flex;justify-content:center;
+  }
+  .hero-illustration svg{width:100%;max-width:340px;}
   .badge{
-    display:inline-flex;align-items:center;gap:8px;background:rgba(245,166,35,0.18);
-    border:1px solid var(--orange);color:var(--orange);font-weight:700;font-size:13px;
-    padding:8px 16px;border-radius:999px;margin-bottom:22px;
+    display:inline-block;background:rgba(246,185,15,.18);
+    border:1px solid rgba(246,185,15,.5);
+    padding:7px 16px;border-radius:999px;font-size:.85rem;font-weight:700;
+    margin-bottom:20px;color:var(--yellow-light);
   }
-  .hero h1{font-size:32px;line-height:1.25;margin:0 0 14px;}
-  .hero h1 .hi{color:var(--orange);}
-  .hero p{font-size:16px;line-height:1.6;color:#d7dcf5;max-width:520px;margin:0 auto 22px;}
-  .hero p b{color:var(--white);}
-  .pin{
-    display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);
-    border:1px solid rgba(255,255,255,0.2);padding:8px 16px;border-radius:999px;font-size:13.5px;
-    margin-bottom:26px;
-  }
-  .hero-ctas{display:flex;flex-direction:column;gap:12px;align-items:center;}
-  .btn-orange{
-    background:var(--orange);color:var(--white);font-weight:800;font-size:16px;
-    padding:15px 26px;border-radius:10px;width:100%;max-width:340px;text-align:center;
-    box-shadow:0 10px 24px rgba(245,166,35,0.3);
-  }
-  .btn-orange:hover{background:var(--orange-dark);}
-  .btn-outline{
-    border:1.5px solid rgba(255,255,255,0.4);color:var(--white);font-weight:600;font-size:15px;
-    padding:13px 24px;border-radius:10px;width:100%;max-width:340px;text-align:center;
-  }
+  .hero h1{font-size:2.3rem;font-weight:800;margin-bottom:16px;line-height:1.25;}
+  .hero p.sub{font-size:1.08rem;max-width:520px;margin:0 0 28px;color:#D9E7F7;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px;}
+  .btn-primary{background:var(--yellow);color:var(--blue-dark);padding:14px 28px;border-radius:999px;font-weight:800;font-size:1rem;}
+  .btn-primary:hover{background:var(--yellow-light);}
+  .btn-secondary{background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.4);color:var(--white);padding:13px 26px;border-radius:999px;font-weight:700;font-size:1rem;}
+  .btn-secondary:hover{background:rgba(255,255,255,.16);}
 
   .stats{
     display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
-    max-width:600px;margin:32px auto 0;text-align:center;
+    max-width:640px;
   }
-  .stats .num{font-size:26px;font-weight:800;color:var(--orange);}
-  .stats .lbl{font-size:12px;color:#c7cdec;margin-top:4px;}
+  .stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);padding:16px 6px;text-align:center;}
+  .stat .num{font-size:1.4rem;font-weight:800;color:var(--yellow-light);}
+  .stat .lbl{font-size:.74rem;color:#D9E7F7;}
 
   .strip{
-    background:var(--orange);color:var(--white);text-align:center;
-    font-size:13.5px;font-weight:700;padding:12px 20px;
+    background:var(--yellow);color:var(--blue-dark);text-align:center;
+    padding:14px 20px;font-weight:700;font-size:.95rem;
   }
 
-  section{padding:52px 0;}
-  .section-head{text-align:center;margin-bottom:34px;}
-  .section-head h2{font-size:26px;color:var(--blue);margin:0 0 8px;}
-  .section-head p{font-size:15px;color:#666;margin:0;}
+  h2.section-title{font-size:1.9rem;font-weight:800;color:var(--blue-dark);margin-bottom:8px;}
+  p.section-sub{color:var(--ink-soft);margin-bottom:36px;font-size:1.02rem;}
+  .center{text-align:center;}
 
   .services-grid{
-    display:grid;grid-template-columns:1fr 1fr;gap:16px;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
   }
-  .service-card{
-    border:1px solid #eee;border-radius:14px;padding:22px 18px;
-    box-shadow:0 4px 14px rgba(20,28,77,0.06);
+  .card{
+    background:var(--white);border:1px solid #e4edf6;border-top:3px solid var(--yellow);border-radius:var(--radius);
+    padding:26px 22px;position:relative;
+    box-shadow:0 2px 10px rgba(18,62,112,.05);
   }
-  .service-card .icon{font-size:26px;margin-bottom:10px;}
-  .service-card h3{font-size:16.5px;color:var(--blue);margin:0 0 6px;}
-  .service-card p{font-size:13.5px;color:#666;line-height:1.5;margin:0;}
-  .service-card.new{
-    border:1.5px solid var(--orange);position:relative;
-    background:linear-gradient(180deg,#fff8ec,#ffffff);
-  }
-  .service-card.new .tag{
-    position:absolute;top:-10px;right:14px;background:var(--orange);color:#fff;
-    font-size:10.5px;font-weight:800;padding:3px 10px;border-radius:999px;letter-spacing:0.03em;
+  .card .icon{font-size:1.9rem;margin-bottom:12px;}
+  .card h3{font-size:1.08rem;font-weight:700;margin-bottom:8px;color:var(--blue-dark);}
+  .card p{font-size:.92rem;color:var(--ink-soft);}
+  .tag-new{
+    position:absolute;top:16px;inset-inline-end:16px;
+    background:var(--blue);color:var(--white);font-size:.68rem;font-weight:800;
+    padding:3px 9px;border-radius:999px;letter-spacing:.5px;
   }
 
-  .areas{background:#f7f8fd;}
-  .areas .section-head p{color:#555;max-width:560px;margin:0 auto;}
-  .area-list{
-    display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0 30px;
+  .areas{
+    background:var(--blue-dark);color:var(--white);border-radius:20px;
+    padding:48px 32px;text-align:center;
   }
-  .area-list span{
-    background:#fff;border:1px solid #e2e5f5;color:var(--blue);font-size:13.5px;font-weight:600;
-    padding:9px 16px;border-radius:999px;
-  }
-  .center{text-align:center;}
-  .btn-blue{
-    background:var(--blue);color:#fff;font-weight:700;font-size:15px;
-    padding:14px 24px;border-radius:10px;display:inline-block;
-  }
+  .areas h2{color:var(--white);}
+  .areas p.section-sub{color:#D9E7F7;}
+  .area-list{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:30px;}
+  .area-chip{background:rgba(246,185,15,.15);border:1px solid rgba(246,185,15,.4);padding:8px 16px;border-radius:999px;font-size:.9rem;color:var(--yellow-light);}
 
-  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
-  .why-card .icon{font-size:24px;margin-bottom:8px;}
-  .why-card h3{font-size:15.5px;color:var(--blue);margin:0 0 6px;}
-  .why-card p{font-size:13.5px;color:#666;line-height:1.5;margin:0;}
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .why-card{text-align:center;padding:10px;}
+  .why-card .icon{font-size:1.8rem;margin-bottom:10px;}
+  .why-card h3{font-size:1rem;margin-bottom:6px;color:var(--blue-dark);}
+  .why-card p{font-size:.88rem;color:var(--ink-soft);}
 
-  .cta{
-    background:linear-gradient(180deg,var(--blue) 0%,var(--blue-dark) 100%);
-    color:#fff;text-align:center;padding:48px 20px;
+  .cta-final{
+    background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dark) 100%);
+    color:var(--white);text-align:center;border-radius:20px;padding:54px 26px;
   }
-  .cta h2{font-size:26px;margin:0 0 10px;}
-  .cta p{color:#c7cdec;font-size:14.5px;margin:0 0 24px;}
-  .cta .call-btn{display:inline-flex;font-size:17px;padding:15px 28px;margin:0 auto;}
+  .cta-final h2{color:var(--white);font-size:1.8rem;margin-bottom:10px;}
+  .cta-final p{color:#D9E7F7;margin-bottom:26px;}
 
   footer{
-    text-align:center;padding:28px 20px;font-size:12.5px;color:#888;border-top:1px solid #eee;
+    text-align:center;padding:34px 20px 40px;font-size:.85rem;
+    background:var(--blue-dark);color:#D9E7F7;
   }
+  footer .mgmt{color:var(--yellow-light);font-weight:700;margin-top:6px;font-size:.9rem;}
+  footer strong{color:var(--white);}
 
-  @media (min-width:640px){
-    .hero-ctas{flex-direction:row;justify-content:center;}
-    .btn-orange, .btn-outline{width:auto;}
-    .why-grid{grid-template-columns:1fr 1fr 1fr 1fr;}
+  @media(max-width:820px){
+    .hero-grid{grid-template-columns:1fr;text-align:center;}
+    .hero-ctas{justify-content:center;}
+    .stats{max-width:100%;grid-template-columns:repeat(2,1fr);margin:0 auto;}
+    .hero-illustration{order:-1;}
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .why-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(max-width:560px){
+    .services-grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:1fr;}
+    .hero h1{font-size:1.6rem;}
   }
 </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "HomeAndConstructionBusiness",
-  "name": "NJFixPro",
-  "telephone": "+1-845-538-1219",
-  "areaServed": {
-    "@type": "City",
-    "name": "Bayonne",
-    "containedInPlace": "New Jersey"
-  },
-  "url": "https://njfixpro.com",
-  "priceRange": "$$",
-  "makesOffer": [
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Airbnb / Short-Term Rental Cleaning" }},
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Plumbing" }},
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Electrical" }}
-  ]
-}
-</script></head>
+</head>
 <body>
 
 <header>
-  <a class="brand" href="#"><span class="icon">🔧</span> NJFixPro</a>
-  <div class="head-right">
-    <div class="lang-toggle">
-      <button id="btn-en" onclick="setLang('en')">EN</button>
-      <button id="btn-ar" onclick="setLang('ar')">عربي</button>
+  <div class="header-inner">
+    <div class="brand">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="50" fill="#1D5FA6"/>
+        <ellipse cx="50" cy="34" rx="12.5" ry="12" fill="#F4C7A1"/>
+        <path d="M50 21c8 0 13.5 5 14 12.5.3 4.5-1 7-2 8.5-.5-3-1-5.5-3-6.5-4 2.5-13 2.5-18 0-1.5 1-2.5 3.5-3 6.5-1-1.5-2.3-4-2-8.5C36.5 26 42 21 50 21z" fill="#3B2415"/>
+        <path d="M60 30c3 1.5 4.5 5 3.5 8.5l-3.5-1c.4-2.5-.2-5-2-6.5.7-.4 1.4-.7 2-1z" fill="#3B2415"/>
+        <circle cx="45.5" cy="35" r="1.3" fill="#3B2415"/>
+        <circle cx="54.5" cy="35" r="1.3" fill="#3B2415"/>
+        <path d="M46 39.5c1.3 1.3 6.7 1.3 8 0" stroke="#B5754A" stroke-width="1" stroke-linecap="round" fill="none"/>
+        <path d="M27 84c1.5-19 9-29 23-29s21.5 10 23 29z" fill="#2C74C4"/>
+        <path d="M31 60c5.5-3.5 12.5-5.5 19-5.5s13.5 2 19 5.5l-3 13H34z" fill="#F6B90F"/>
+        <path d="M45 55.5c1.5 2 6.5 2 8 0l-1 6h-6z" fill="#F4C7A1"/>
+        <g transform="translate(66,48) rotate(24)">
+          <rect x="-6" y="-26" width="12" height="28" rx="3" fill="#F6B90F"/>
+          <rect x="-7.5" y="-33" width="15" height="9" rx="2.5" fill="#2C74C4"/>
+          <rect x="-2" y="-40" width="4" height="8" rx="1.5" fill="#2C74C4"/>
+        </g>
+        <rect x="28" y="68" width="3" height="13" rx="1.5" fill="#3B2415" transform="rotate(-16 28 68)"/>
+      </svg>
+      <span>NJFixPro</span>
     </div>
-    <a class="call-btn" href="tel:+18455381219">📞 <span data-en><bdi dir="ltr">(845) 538-1219</bdi></span><span data-ar><bdi dir="ltr">(845) 538-1219</bdi></span></a>
+    <div class="header-actions">
+      <button class="lang-toggle" onclick="setLang('en')">EN</button>
+      <button class="lang-toggle" onclick="setLang('ar')">عربي</button>
+      <a class="call-btn" href="tel:+18455381219">📞 8455381219</a>
+    </div>
   </div>
 </header>
 
-<div class="hero">
-  <div class="badge">
-    <span data-en>✅ Bayonne's Trusted Home Repair Team</span>
-    <span data-ar>✅ فريق بايون الموثوق لإصلاح المنازل</span>
-  </div>
-  <h1 data-en>Your Home Fixed Right,<br><span class="hi">Fast &amp; Affordable</span></h1>
-  <h1 data-ar>بيتك مُصلَّح صح،<br><span class="hi">بسرعة وبسعر مناسب</span></h1>
-  <p data-en>Plumbing, electrical, cleaning, painting &amp; more — serving <b>Bayonne, NJ</b> with professional, reliable service.</p>
-  <p data-ar>سباكة، كهرباء، تنظيف، دهانات وأكتر — بنخدم <b>بايون، نيوجيرزي</b> بخدمة احترافية وموثوقة.</p>
-  <div class="pin"><span data-en>📍 Serving Bayonne, NJ Only</span><span data-ar>📍 نخدم بايون فقط، نيوجيرزي</span></div>
-  <div class="hero-ctas">
-    <a class="btn-orange" href="tel:+18455381219"><span data-en>📞 Call Now – <bdi dir="ltr">(845) 538-1219</bdi></span><span data-ar>📞 اتصل الآن – <bdi dir="ltr">(845) 538-1219</bdi></span></a>
-    <a class="btn-outline" href="#services"><span data-en>Our Services ↓</span><span data-ar>خدماتنا ↓</span></a>
-  </div>
-  <div class="stats">
-    <div><div class="num">500+</div><div class="lbl"><span data-en>Jobs Completed</span><span data-ar>عملية منجزة</span></div></div>
-    <div><div class="num">5 ⭐</div><div class="lbl"><span data-en>Customer Rating</span><span data-ar>تقييم العملاء</span></div></div>
-    <div><div class="num">24h</div><div class="lbl"><span data-en>Fast Response</span><span data-ar>استجابة سريعة</span></div></div>
-    <div><div class="num">10+</div><div class="lbl"><span data-en>Years Experience</span><span data-ar>سنوات خبرة</span></div></div>
-  </div>
-</div>
-
-<div class="strip">
-  <span data-en>🏠 We exclusively serve Bayonne, NJ 07002 — your local experts!</span>
-  <span data-ar>🏠 نخدم حصريًا بايون، نيوجيرزي 07002 — خبراؤك المحليون!</span>
-</div>
-
-<section id="services">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 data-en>Our Services</h2>
-      <h2 data-ar>خدماتنا</h2>
-      <p data-en>Professional home repair services in Bayonne, NJ</p>
-      <p data-ar>خدمات إصلاح منازل احترافية في بايون، نيوجيرزي</p>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="badge">
+        <span class="lang-block active" data-lang="en">Airbnb & Vrbo Property Management — Bayonne, NJ</span>
+        <span class="lang-block" data-lang="ar">إدارة عقارات Airbnb و Vrbo — بايون، نيوجيرزي</span>
+      </span>
+      <h1>
+        <span class="lang-block active" data-lang="en">Turn Your Empty Home Into a Thriving Airbnb</span>
+        <span class="lang-block" data-lang="ar">حوّل منزلك الفاضي لـ Airbnb ناجح</span>
+      </h1>
+      <p class="sub">
+        <span class="lang-block active" data-lang="en">Listing setup, guest turnover cleaning, and full-service management for Airbnb & Vrbo hosts in Bayonne, NJ.</span>
+        <span class="lang-block" data-lang="ar">تجهيز الإعلان، تنظيف بين الضيوف، وإدارة كاملة لمضيفي Airbnb و Vrbo في بايون.</span>
+      </p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="tel:+18455381219">
+          <span class="lang-block active" data-lang="en">📞 Call Now – 8455381219</span>
+          <span class="lang-block" data-lang="ar">📞 اتصل الآن – 8455381219</span>
+        </a>
+        <a class="btn-secondary" href="#services">
+          <span class="lang-block active" data-lang="en">Our Services ↓</span>
+          <span class="lang-block" data-lang="ar">خدماتنا ↓</span>
+        </a>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="num">40+</div><div class="lbl"><span class="lang-block active" data-lang="en">Rentals Managed</span><span class="lang-block" data-lang="ar">عقار تحت الإدارة</span></div></div>
+        <div class="stat"><div class="num">5 ⭐</div><div class="lbl"><span class="lang-block active" data-lang="en">Host Rating</span><span class="lang-block" data-lang="ar">تقييم المضيفين</span></div></div>
+        <div class="stat"><div class="num">24h</div><div class="lbl"><span class="lang-block active" data-lang="en">Turnover</span><span class="lang-block" data-lang="ar">التجهيز</span></div></div>
+        <div class="stat"><div class="num">10+</div><div class="lbl"><span class="lang-block active" data-lang="en">Years</span><span class="lang-block" data-lang="ar">سنوات خبرة</span></div></div>
+      </div>
     </div>
-    <div class="services-grid">
-      <div class="service-card new">
-        <div class="tag">NEW</div>
-        <div class="icon">🛏️</div>
-        <h3 data-en>Airbnb / Short-Term Rental Cleaning</h3>
-        <h3 data-ar>تنظيف Airbnb / الإيجار قصير المدى</h3>
-        <p data-en>Guest turnover cleaning by our dedicated all-female cleaning team, serving Bayonne, NJ hosts — beds, bathrooms, kitchen &amp; restocking, ready fast between check-out and check-in.</p>
-        <p data-ar>تنظيف بين الحجوزات بواسطة فريق سيدات متخصص، لخدمة مضيفي بايون — أسرّة، حمامات، مطبخ وتجديد المستلزمات، جاهز بسرعة بين مغادرة ووصول الضيوف.</p>
-      </div>
-      <div class="service-card">
-        <div class="icon">🚿</div>
-        <h3 data-en>Plumbing</h3><h3 data-ar>سباكة</h3>
-        <p data-en>Leaks, pipes, faucets, drains &amp; full installations</p>
-        <p data-ar>تسريبات، مواسير، حنفيات، مصارف وتركيبات كاملة</p>
-      </div>
-      <div class="service-card">
-        <div class="icon">⚡</div>
-        <h3 data-en>Electrical</h3><h3 data-ar>كهرباء</h3>
-        <p data-en>Wiring, outlets, panels &amp; lighting installations</p>
-        <p data-ar>أسلاك، مقابس، لوحات كهرباء وتركيب إضاءة</p>
-      </div>
-      <div class="service-card">
-        <div class="icon">🧹</div>
-        <h3 data-en>Cleaning</h3><h3 data-ar>تنظيف</h3>
-        <p data-en>Deep cleaning, move-in/out &amp; regular maintenance</p>
-        <p data-ar>تنظيف عميق، تنظيف الانتقال، وصيانة دورية</p>
-      </div>
-      <div class="service-card">
-        <div class="icon">🎨</div>
-        <h3 data-en>Painting</h3><h3 data-ar>دهانات</h3>
-        <p data-en>Interior &amp; exterior painting, professional finish</p>
-        <p data-ar>دهانات داخلية وخارجية بلمسة احترافية</p>
-      </div>
-      <div class="service-card">
-        <div class="icon">🔩</div>
-        <h3 data-en>Installation</h3><h3 data-ar>تركيبات</h3>
-        <p data-en>Furniture, appliances, fixtures &amp; more</p>
-        <p data-ar>أثاث، أجهزة، تجهيزات وأكتر</p>
-      </div>
-      <div class="service-card">
-        <div class="icon">🏠</div>
-        <h3 data-en>General Repair</h3><h3 data-ar>إصلاحات عامة</h3>
-        <p data-en>Doors, windows, tiles, drywall &amp; handyman jobs</p>
-        <p data-ar>أبواب، شبابيك، بلاط، حوائط وأعمال صيانة عامة</p>
-      </div>
+    <div class="hero-illustration">
+      <svg viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="blueBottle" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#3D82D1"/>
+            <stop offset="1" stop-color="#123E70"/>
+          </linearGradient>
+          <linearGradient id="yellowBottle" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#FFD65C"/>
+            <stop offset="1" stop-color="#E0A100"/>
+          </linearGradient>
+          <linearGradient id="bucketGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#3D82D1"/>
+            <stop offset="1" stop-color="#123E70"/>
+          </linearGradient>
+          <radialGradient id="towelShade" cx="0.3" cy="0.3" r="0.9">
+            <stop offset="0" stop-color="#ffffff" stop-opacity=".35"/>
+            <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <ellipse cx="120" cy="302" rx="92" ry="13" fill="#0D2C50" opacity="0.28"/>
+
+        <!-- folded towel stack -->
+        <g>
+          <rect x="112" y="234" width="88" height="18" rx="5" fill="#FFFFFF" stroke="#D7E1EC" stroke-width="1.2"/>
+          <rect x="112" y="234" width="88" height="18" rx="5" fill="url(#towelShade)"/>
+          <rect x="112" y="215" width="88" height="18" rx="5" fill="#F6B90F"/>
+          <rect x="112" y="215" width="88" height="18" rx="5" fill="url(#towelShade)"/>
+          <rect x="112" y="196" width="88" height="18" rx="5" fill="#1D5FA6"/>
+          <rect x="112" y="196" width="88" height="18" rx="5" fill="url(#towelShade)"/>
+          <rect x="112" y="177" width="88" height="18" rx="5" fill="#FFD65C"/>
+          <rect x="112" y="177" width="88" height="18" rx="5" fill="url(#towelShade)"/>
+        </g>
+
+        <!-- mop handle + head -->
+        <rect x="66" y="64" width="7" height="184" rx="3.5" fill="#B9C2CC"/>
+        <rect x="66" y="64" width="3" height="184" rx="1.5" fill="#DDE4EB"/>
+        <path d="M45 248c0-16 12.5-25.5 28-25.5s28 9.5 28 25.5z" fill="#1D5FA6"/>
+        <path d="M45 248c1-13.5 11-22 28-22" stroke="#3D82D1" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M47 246c1-1 3-25 26-25M55 247c1-1 4-27 20-28M64 248c.6-1 4.5-28 10-29" stroke="#123E70" stroke-width="1.4" fill="none" stroke-linecap="round" opacity=".5"/>
+
+        <!-- broom handle + bristles -->
+        <rect x="166" y="52" width="7" height="158" rx="3.5" fill="#B5763A"/>
+        <rect x="166" y="52" width="3" height="158" rx="1.5" fill="#D69A5C"/>
+        <path d="M144 210c0-15 10.5-24 25.5-24s25.5 9 25.5 24z" fill="#F6B90F"/>
+        <path d="M144 210c1-12 10-19.5 25.5-19.5M150 210c1-10 8-16 19.5-16M195 210c-1-12-10-19.5-25.5-19.5" stroke="#C98E00" stroke-width="1.3" fill="none" stroke-linecap="round" opacity=".55"/>
+
+        <!-- blue spray bottle -->
+        <g transform="translate(92,86)">
+          <rect x="-17" y="34" width="34" height="70" rx="8" fill="url(#blueBottle)"/>
+          <rect x="-14" y="36" width="6" height="60" rx="3" fill="#ffffff" opacity=".18"/>
+          <rect x="-13" y="14" width="26" height="24" rx="5" fill="#2C74C4"/>
+          <rect x="-5" y="-4" width="10" height="20" rx="2.5" fill="#E7EEF6"/>
+          <path d="M5 0c11-3 20 2 22 11l-9 2.5c-1-4.5-6.5-7.5-13-6z" fill="#E7EEF6"/>
+          <circle cx="26" cy="10" r="3" fill="#E7EEF6"/>
+        </g>
+
+        <!-- yellow spray bottle -->
+        <g transform="translate(42,106)">
+          <rect x="-14" y="26" width="28" height="56" rx="7" fill="url(#yellowBottle)"/>
+          <rect x="-11" y="28" width="5" height="48" rx="2.5" fill="#ffffff" opacity=".25"/>
+          <rect x="-10" y="10" width="20" height="18" rx="4" fill="#2C74C4"/>
+          <rect x="-4" y="-4" width="8" height="16" rx="2" fill="#123E70"/>
+          <path d="M4 -1c9-2 16 2 18 9l-7 2c-1-3.5-5.5-6-10-4.8z" fill="#123E70"/>
+        </g>
+
+        <!-- bucket with sponge -->
+        <path d="M97 262l6 28c0 4.5 4.5 7 27 7s27-2.5 27-7l6-28z" fill="url(#bucketGrad)"/>
+        <path d="M100 262c2 10 4 26 5 27" stroke="#3D82D1" stroke-width="2" opacity=".4" stroke-linecap="round"/>
+        <ellipse cx="130" cy="262" rx="33" ry="8" fill="#F6B90F"/>
+        <path d="M107 257c6-11 40-11 46 0" stroke="#123E70" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <rect x="118" y="248" width="18" height="12" rx="3.5" fill="#FFD65C"/>
+        <rect x="118" y="248" width="18" height="4" rx="2" fill="#ffffff" opacity=".3"/>
+
+        <!-- sparkle accents -->
+        <circle cx="207" cy="86" r="4" fill="#FFD65C"/>
+        <circle cx="216" cy="108" r="3" fill="#FFD65C"/>
+        <path d="M38 56l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#FFD65C"/>
+      </svg>
     </div>
   </div>
 </section>
 
-<section class="areas">
+<div class="strip">
+  <span class="lang-block active" data-lang="en">Serving Bayonne, NJ 07002 Airbnb & Vrbo hosts exclusively</span>
+  <span class="lang-block" data-lang="ar">نخدم حصريًا مضيفي Airbnb و Vrbo في بايون، نيوجيرزي 07002</span>
+</div>
+
+<section id="services">
   <div class="wrap">
-    <div class="section-head">
-      <h2 data-en>Proudly Serving Bayonne, NJ</h2>
-      <h2 data-ar>نخدم بايون، نيوجيرزي بكل فخر</h2>
-      <p data-en>We are your local Bayonne home repair team. We know every neighborhood, every street, and every home in Bayonne — that's why homeowners trust us.</p>
-      <p data-ar>إحنا فريق بايون المحلي لإصلاح المنازل. نعرف كل حي وكل شارع وكل بيت في بايون — عشان كده أصحاب المنازل بيثقوا فينا.</p>
-    </div>
-    <div class="area-list">
-      <span data-en>📍 Downtown Bayonne</span><span data-ar>📍 وسط بايون</span>
-      <span data-en>📍 Bergen Point</span><span data-ar>📍 بيرغن بوينت</span>
-      <span data-en>📍 East 5th</span><span data-ar>📍 إيست فيفث</span>
-      <span data-en>📍 West Side</span><span data-ar>📍 ويست سايد</span>
-      <span data-en>📍 North End</span><span data-ar>📍 نورث إند</span>
-      <span data-en>📍 Constable Hook</span><span data-ar>📍 كونستابل هوك</span>
-    </div>
     <div class="center">
-      <a class="btn-blue" href="tel:+18455381219"><span data-en>📞 Call Your Bayonne Team</span><span data-ar>📞 اتصل بفريق بايون</span></a>
+      <h2 class="section-title">
+        <span class="lang-block active" data-lang="en">Our Services</span>
+        <span class="lang-block" data-lang="ar">خدماتنا</span>
+      </h2>
+      <p class="section-sub">
+        <span class="lang-block active" data-lang="en">Everything your Airbnb or Vrbo listing needs — start to finish</span>
+        <span class="lang-block" data-lang="ar">كل اللي يحتاجه إعلان الـ Airbnb أو Vrbo بتاعك — من الأول للآخر</span>
+      </p>
+    </div>
+    <div class="services-grid">
+      <div class="card">
+        <span class="tag-new">
+          <span class="lang-block active" data-lang="en">NEW</span>
+          <span class="lang-block" data-lang="ar">جديد</span>
+        </span>
+        <div class="icon">🏝️</div>
+        <h3><span class="lang-block active" data-lang="en">Airbnb & Vrbo Setup</span><span class="lang-block" data-lang="ar">تجهيز عقارات Airbnb و Vrbo</span></h3>
+        <p><span class="lang-block active" data-lang="en">Furnishing empty homes, staging and listing setup so your property is guest-ready and booking fast.</span><span class="lang-block" data-lang="ar">تأثيث المنازل الفاضية، تنسيقها، وإعداد الإعلان عشان العقار يبقى جاهز للضيوف ويحجز بسرعة.</span></p>
+      </div>
+      <div class="card">
+        <div class="icon">🧹</div>
+        <h3><span class="lang-block active" data-lang="en">Guest Turnover Cleaning</span><span class="lang-block" data-lang="ar">تنظيف بين الضيوف</span></h3>
+        <p><span class="lang-block active" data-lang="en">Fast, spotless cleaning by our dedicated team between check-out and check-in — beds, bathrooms, kitchen & restocking.</span><span class="lang-block" data-lang="ar">تنظيف سريع وممتاز بين مغادرة ووصول الضيوف — أسرّة، حمامات، مطبخ وتجديد المستلزمات.</span></p>
+      </div>
+      <div class="card">
+        <div class="icon">📋</div>
+        <h3><span class="lang-block active" data-lang="en">Full Property Management</span><span class="lang-block" data-lang="ar">إدارة كاملة للعقار</span></h3>
+        <p><span class="lang-block active" data-lang="en">Guest messaging, check-in coordination and calendar upkeep so your rental runs itself.</span><span class="lang-block" data-lang="ar">التواصل مع الضيوف، تنسيق الدخول والخروج، ومتابعة الحجوزات عشان العقار يشتغل من غير ما تتعب.</span></p>
+      </div>
+      <div class="card">
+        <div class="icon">🛠️</div>
+        <h3><span class="lang-block active" data-lang="en">Listing-Ready Repairs</span><span class="lang-block" data-lang="ar">إصلاحات جاهزية الإعلان</span></h3>
+        <p><span class="lang-block active" data-lang="en">Quick fixes and upkeep so your Airbnb or Vrbo stays in top guest-ready shape year-round.</span><span class="lang-block" data-lang="ar">إصلاحات سريعة وصيانة عشان العقار يفضل جاهز للضيوف طول السنة.</span></p>
+      </div>
+      <div class="card">
+        <div class="icon">🎨</div>
+        <h3><span class="lang-block active" data-lang="en">Interior Styling</span><span class="lang-block" data-lang="ar">تنسيق داخلي</span></h3>
+        <p><span class="lang-block active" data-lang="en">Fresh paint and styling touches that boost photos, reviews and booking rates.</span><span class="lang-block" data-lang="ar">دهانات جديدة ولمسات تنسيق بترفع مستوى الصور والتقييمات ونسبة الحجز.</span></p>
+      </div>
+      <div class="card">
+        <div class="icon">🆘</div>
+        <h3><span class="lang-block active" data-lang="en">24/7 Guest Support</span><span class="lang-block" data-lang="ar">دعم الضيوف على مدار الساعة</span></h3>
+        <p><span class="lang-block active" data-lang="en">Emergency fixes so a guest issue never turns into a bad review.</span><span class="lang-block" data-lang="ar">حلول طارئة عشان مشكلة الضيف ما تتحولش لتقييم سيء.</span></p>
+      </div>
     </div>
   </div>
 </section>
 
 <section>
+  <div class="wrap areas">
+    <h2 class="section-title">
+      <span class="lang-block active" data-lang="en">Proudly Managing Bayonne Rentals</span>
+      <span class="lang-block" data-lang="ar">بندير عقارات بايون بكل فخر</span>
+    </h2>
+    <p class="section-sub">
+      <span class="lang-block active" data-lang="en">We know every neighborhood — turning vacant homes into 5-star stays across Bayonne.</span>
+      <span class="lang-block" data-lang="ar">بنعرف كل حي — بنحوّل المنازل الفاضية لإقامات بخمس نجوم في كل بايون.</span>
+    </p>
+    <div class="area-list">
+      <span class="area-chip"><span class="lang-block active" data-lang="en">Downtown Bayonne</span><span class="lang-block" data-lang="ar">وسط بايون</span></span>
+      <span class="area-chip"><span class="lang-block active" data-lang="en">Bergen Point</span><span class="lang-block" data-lang="ar">بيرغن بوينت</span></span>
+      <span class="area-chip"><span class="lang-block active" data-lang="en">East 5th</span><span class="lang-block" data-lang="ar">إيست فيفث</span></span>
+      <span class="area-chip"><span class="lang-block active" data-lang="en">West Side</span><span class="lang-block" data-lang="ar">ويست سايد</span></span>
+      <span class="area-chip"><span class="lang-block active" data-lang="en">North End</span><span class="lang-block" data-lang="ar">نورث إند</span></span>
+      <span class="area-chip"><span class="lang-block active" data-lang="en">Constable Hook</span><span class="lang-block" data-lang="ar">كونستابل هوك</span></span>
+    </div>
+    <a class="btn-primary" href="tel:+18455381219">
+      <span class="lang-block active" data-lang="en">📞 Talk to Your Bayonne Team</span>
+      <span class="lang-block" data-lang="ar">📞 اتصل بفريق بايون</span>
+    </a>
+  </div>
+</section>
+
+<section>
   <div class="wrap">
-    <div class="section-head">
-      <h2 data-en>Why Choose NJFixPro?</h2>
-      <h2 data-ar>ليه تختار NJFixPro؟</h2>
-      <p data-en>Bayonne homeowners trust us for good reason</p>
-      <p data-ar>أصحاب منازل بايون بيثقوا فينا لسبب وجيه</p>
+    <div class="center">
+      <h2 class="section-title">
+        <span class="lang-block active" data-lang="en">Why Hosts Choose NJFixPro</span>
+        <span class="lang-block" data-lang="ar">ليه المضيفين بيختاروا NJFixPro؟</span>
+      </h2>
+      <p class="section-sub">
+        <span class="lang-block active" data-lang="en">Bayonne landlords trust us with their rentals for good reason</span>
+        <span class="lang-block" data-lang="ar">ملاك بايون بيثقوا فينا في عقاراتهم لسبب وجيه</span>
+      </p>
     </div>
     <div class="why-grid">
       <div class="why-card">
         <div class="icon">⚡</div>
-        <h3 data-en>Fast Response</h3><h3 data-ar>استجابة سريعة</h3>
-        <p data-en>We show up on time and get the job done quickly without cutting corners.</p>
-        <p data-ar>بنوصل في الميعاد وننجز الشغل بسرعة من غير أي تنازل في الجودة.</p>
+        <h3><span class="lang-block active" data-lang="en">Fast Turnover</span><span class="lang-block" data-lang="ar">تجهيز سريع</span></h3>
+        <p><span class="lang-block active" data-lang="en">Ready between check-out and check-in, every time.</span><span class="lang-block" data-lang="ar">جاهزين بين مغادرة ووصول الضيوف، في كل مرة.</span></p>
       </div>
       <div class="why-card">
         <div class="icon">💰</div>
-        <h3 data-en>Fair Pricing</h3><h3 data-ar>أسعار عادلة</h3>
-        <p data-en>Honest quotes upfront — no hidden fees, no surprises at the end.</p>
-        <p data-ar>أسعار واضحة من الأول — بدون رسوم مخفية أو مفاجآت في الآخر.</p>
+        <h3><span class="lang-block active" data-lang="en">Fair Pricing</span><span class="lang-block" data-lang="ar">أسعار عادلة</span></h3>
+        <p><span class="lang-block active" data-lang="en">Honest quotes upfront — no hidden fees.</span><span class="lang-block" data-lang="ar">أسعار واضحة من الأول — بدون رسوم مخفية.</span></p>
       </div>
       <div class="why-card">
         <div class="icon">🛡️</div>
-        <h3 data-en>Trusted &amp; Reliable</h3><h3 data-ar>موثوقون وجديرون بالثقة</h3>
-        <p data-en>Hundreds of happy customers right here in Bayonne, NJ.</p>
-        <p data-ar>مئات العملاء الراضيين هنا في بايون، نيوجيرزي.</p>
+        <h3><span class="lang-block active" data-lang="en">Trusted & Reliable</span><span class="lang-block" data-lang="ar">موثوقون</span></h3>
+        <p><span class="lang-block active" data-lang="en">Dozens of happy hosts right here in Bayonne.</span><span class="lang-block" data-lang="ar">عشرات المضيفين الراضيين هنا في بايون.</span></p>
       </div>
       <div class="why-card">
         <div class="icon">📞</div>
-        <h3 data-en>Easy to Reach</h3><h3 data-ar>سهل التواصل</h3>
-        <p data-en>Call or message us anytime — we respond fast and speak your language.</p>
-        <p data-ar>اتصل أو راسلنا في أي وقت — نرد بسرعة ونتحدث لغتك.</p>
+        <h3><span class="lang-block active" data-lang="en">Easy to Reach</span><span class="lang-block" data-lang="ar">سهل التواصل</span></h3>
+        <p><span class="lang-block active" data-lang="en">Call anytime — we respond fast and speak your language.</span><span class="lang-block" data-lang="ar">اتصل في أي وقت — نرد بسرعة ونتحدث لغتك.</span></p>
       </div>
     </div>
   </div>
 </section>
 
-<div class="cta">
-  <h2 data-en>Ready to Fix Your Home in Bayonne?</h2>
-  <h2 data-ar>جاهز تصلّح بيتك في بايون؟</h2>
-  <p data-en>Available Monday – Saturday, 8 AM to 8 PM · Bayonne, NJ 07002</p>
-  <p data-ar>متاحون من الإثنين للسبت، 8 صباحًا لـ 8 مساءً · بايون، نيوجيرزي 07002</p>
-  <a class="call-btn" href="tel:+18455381219">📞 <span data-en><bdi dir="ltr">(845) 538-1219</bdi></span><span data-ar><bdi dir="ltr">(845) 538-1219</bdi></span></a>
-</div>
+<section>
+  <div class="wrap cta-final">
+    <h2>
+      <span class="lang-block active" data-lang="en">Ready to Turn Your Property Into an Airbnb?</span>
+      <span class="lang-block" data-lang="ar">جاهز تحوّل عقارك لـ Airbnb؟</span>
+    </h2>
+    <p>
+      <span class="lang-block active" data-lang="en">Available Monday – Saturday, 8 AM to 8 PM · Bayonne, NJ 07002</span>
+      <span class="lang-block" data-lang="ar">متاحون من الإثنين للسبت، 8 صباحًا لـ 8 مساءً · بايون، نيوجيرزي 07002</span>
+    </p>
+    <a class="btn-primary" href="tel:+18455381219">📞 8455381219</a>
+  </div>
+</section>
 
 <footer>
-  <b>NJFixPro</b> · <span data-en>18th Street, Ground Floor, Bayonne, NJ 07002</span><span data-ar>شارع 18، الدور الأرضي، بايون، نيوجيرزي 07002</span><br>
-  <span data-en>© 2026 NJFixPro. All rights reserved.</span><span data-ar>© 2026 NJFixPro. جميع الحقوق محفوظة.</span> · njfixpro.com
+  <div>
+    <span class="lang-block active" data-lang="en"><strong>NJFixPro</strong> · 18th Street, Ground Floor, Bayonne, NJ 07002</span>
+    <span class="lang-block" data-lang="ar"><strong>NJFixPro</strong> · شارع 18، الدور الأرضي، بايون، نيوجيرزي 07002</span>
+  </div>
+  <div class="mgmt">
+    <span class="lang-block active" data-lang="en">Under the management of Ms. Um Karas</span>
+    <span class="lang-block" data-lang="ar">تحت إدارة الأستاذة أم كراس</span>
+  </div>
+  <div style="margin-top:10px;">
+    <span class="lang-block active" data-lang="en">© 2026 NJFixPro. All rights reserved. · njfixpro.com</span>
+    <span class="lang-block" data-lang="ar">© 2026 NJFixPro. جميع الحقوق محفوظة. · njfixpro.com</span>
+  </div>
 </footer>
 
 <script>
-  function setLang(lang){
-    document.documentElement.lang = lang;
-    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-    document.getElementById('btn-ar').classList.toggle('active', lang === 'ar');
-  }
-  setLang('en');
+function setLang(lang){
+  document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+  document.documentElement.setAttribute('lang', lang);
+  document.querySelectorAll('.lang-block').forEach(function(el){
+    if(el.getAttribute('data-lang') === lang){ el.classList.add('active'); }
+    else{ el.classList.remove('active'); }
+  });
+}
 </script>
 
 </body>
