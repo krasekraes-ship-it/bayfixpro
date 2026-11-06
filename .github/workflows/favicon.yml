@@ -36,5 +36,5 @@ jobs:
             echo "No new favicon files to commit."
           else
             git commit -m "Add favicon.ico and apple-touch-icon.png from square logo"
-            git push
+            git pull --rebase origin main && git push
           fi
