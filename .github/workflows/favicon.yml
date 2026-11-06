@@ -1,0 +1,40 @@
+name: Generate favicon files
+
+on:
+  push:
+    paths:
+      - '.github/workflows/favicon.yml'
+      - 'images/njfixpro-logo-square.jpg'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  favicons:
+    if: ${{ hashFiles('favicon.ico') == '' || hashFiles('apple-touch-icon.png') == '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Ensure ImageMagick
+        run: |
+          if ! command -v convert >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y imagemagick
+          fi
+      - name: Generate favicon.ico and apple-touch-icon.png
+        run: |
+          convert images/njfixpro-logo-square.jpg -resize 180x180 apple-touch-icon.png
+          convert images/njfixpro-logo-square.jpg -define icon:auto-resize=16,32,48 favicon.ico
+      - name: Commit generated files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add favicon.ico apple-touch-icon.png
+          if git diff --cached --quiet; then
+            echo "No new favicon files to commit."
+          else
+            git commit -m "Add favicon.ico and apple-touch-icon.png from square logo"
+            git push
+          fi
