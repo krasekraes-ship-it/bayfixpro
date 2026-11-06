@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   favicons:
-    if: ${{ hashFiles('favicon.ico') == '' || hashFiles('apple-touch-icon.png') == '' }}
+
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
